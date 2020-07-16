@@ -5,12 +5,29 @@
 	<meta name='viewport' content='width=device-width,initial-scale=1'>
 
 	<title>Svelte app</title>
+	<my-element string="Testing, testing" num=42 bool></my-element>
+	<my-element string="Testing, testing" num=42>
+		<p>This goes in the element's slot.</p>
+	</my-element>
 
 	<link rel='icon' type='image/png' href='/favicon.png'>
 	<link rel='stylesheet' href='/global.css'>
 	<link rel='stylesheet' href='/build/bundle.css'>
 
 	<script defer src='/build/bundle.js'></script>
+	<script>
+		customElements.whenDefined('my-element')
+			.then(() => setElementProps());
+			
+		function setElementProps() {
+			const myElements = document.querySelectorAll('my-element');
+			const firstElement = myElements[0];
+			firstElement.array = [1, 2, 3];
+			const secondElement = myElements[1];
+			secondElement.array = [4, 5, 6];
+			secondElement.handler = () => { alert('this is a custom handler'); };
+		}
+	</script>
 </head>
 
 <body>
