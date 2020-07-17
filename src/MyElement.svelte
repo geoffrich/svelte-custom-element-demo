@@ -4,7 +4,7 @@
 	export let string = "";
 	export let num = 0;
 	export let array = [];
-	export let bool = undefined;
+	export let disabled = undefined;
 	export let handler = () => { alert('hello!'); };
 </script>
 
@@ -14,9 +14,9 @@
 		<li>String: {string}</li>
 		<li>Number: {num}</li>
 		<li>Array: {array.join(',')}</li>
-		<li>Boolean: {bool !== undefined}</li>
+		<li>Boolean: {disabled !== undefined}</li>
 	</ul>
-	<button disabled={bool !== undefined} on:click={handler}>Click me</button>
+	<button disabled={disabled !== undefined} on:click={handler}>Click me</button>
 	<details open>
 		<slot>You can put something in the component's slot and it will show up here!</slot>
 	</details>
